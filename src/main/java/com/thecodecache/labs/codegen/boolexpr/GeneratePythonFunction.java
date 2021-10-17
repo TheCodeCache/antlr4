@@ -29,7 +29,7 @@ import com.thecodecache.labs.codegen.boolexpr.BooleanExprParser.ParseContext;
  * 
  * @author manoranjan
  */
-public class FunctionTemplate {
+public class GeneratePythonFunction {
 	public static void main(final String[] args) {
 
 		// Loading and Reading the function template
