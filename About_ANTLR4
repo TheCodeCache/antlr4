@@ -1,0 +1,28 @@
+
+ANTLR v4 is a powerful parser generator that you can use to read, process,
+execute, or translate structured text such as program source code, data, and
+configuration files. That means you can use it to build all sorts of useful tools
+like legacy code converters, domain-specific language interpreters, Java to
+C# translators, wiki renderers, XML/HTML parsers, DNA pattern recognizers,
+bytecode assemblers, language pretty printers, and of course full compilers.
+
+ANTLR is an LL parser (Left-to-right, Leftmost derivation) is a top-down parser for 
+a subset of context-free languages. It parses the input from Left to right, 
+performing Leftmost derivation of the sentence.
+It simplifies a lot of steps that makes creating language recognizer and parsers easier and convenient .
+
+ANTLR4 provides two ways of traversing syntax tree:
+
+Listener (default): 
+	The listener pattern is an event driven method of traversing the syntax tree for each parser rule type. 
+	Provides an interface containing entry and exit event methods for each parser rule.
+Visitor: 
+	This allows the parse tree traversal to also be controlled by the user. 
+	The nodes(for parser rules) in the parse tree are traversed or visited explicitly 
+		using the visit methods provided.
+	The Listener and Visitor patterns both have their own pros and cons
+
+DEBUGGING GRAMMAR:
+	we can also debug the grammar itself, all it takes is an input file 
+		and the generated lexer and parser code files
+

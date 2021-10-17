@@ -1,10 +1,8 @@
-/**
- * 
- */
-package com.github.thecodecache.labs;
+
+package com.thecodecache.labs.codegen.calculator;
 
 /**
- * @author Hp
+ * @author manoranjan
  */
 public class HelloWorld {
 
@@ -14,6 +12,6 @@ public class HelloWorld {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		System.out.println("Hello - The Code Cache!");
+		System.out.println("Hello - TheCodeCache!");
 	}
 }
