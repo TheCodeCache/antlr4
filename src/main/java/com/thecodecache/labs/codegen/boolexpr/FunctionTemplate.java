@@ -22,16 +22,23 @@ import org.stringtemplate.v4.STGroupFile;
 import com.thecodecache.labs.codegen.boolexpr.BooleanExprParser.ParseContext;
 
 /**
+ * It uses a string template to generate the python function from the boolean
+ * expression supplied as input,
+ * 
+ * the python function template is present at resources path
+ * 
  * @author manoranjan
  */
 public class FunctionTemplate {
 	public static void main(final String[] args) {
 
+		// Loading and Reading the function template
 		final STGroup stGroup = new STGroupFile("src/main/resources/functionTemplate.stg");
 		final ST stringTemplateExample = stGroup.getInstanceOf("templateExample");
 
-		try (BufferedReader reader = new BufferedReader(new InputStreamReader(
-				new FileInputStream(new File("src/main/resources/expression.txt"))))) {
+		// Reads and Parses the boolean expression
+		try (BufferedReader reader = new BufferedReader(
+				new InputStreamReader(new FileInputStream(new File("src/main/resources/expression.txt"))))) {
 
 			List<String> lines = reader.lines().collect(Collectors.toList());
 			String functionName = "generated_function_%1$s";
@@ -45,13 +52,17 @@ public class FunctionTemplate {
 
 				BooleanExprParser parser = new BooleanExprParser(tokens);
 
+				// creates the parse tree (or syntax tree)
 				ParseTree tree = parser.parse();
 				ParseContext context = (ParseContext) tree;
 				System.out.println(context.str);
 
 				BooleanExprParserBaseListener booleanExprBaseListener = new BooleanExprParserBaseListener();
 
+				// ANTLR4 parse tree walker, it knows how to walk a given parse tree
 				ParseTreeWalker walker = new ParseTreeWalker();
+				// performs the walk on the tree, takes a listener object, we can provide out
+				// custom listener in case we need to process something
 				walker.walk(booleanExprBaseListener, tree);
 
 				List<String> identifiers = booleanExprBaseListener.getIdentifiersList();
@@ -62,6 +73,7 @@ public class FunctionTemplate {
 				function.put("expression", context.str);
 				function.put("params_list", identifiers.stream().collect(Collectors.joining(", ")));
 
+				// adds the generated python function in the list
 				functions.add(function);
 
 				booleanExprBaseListener.clearIdentifiers();
