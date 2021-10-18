@@ -26,3 +26,9 @@ DEBUGGING GRAMMAR:
 	we can also debug the grammar itself, all it takes is an input file 
 		and the generated lexer and parser code files
 
+It's a parser generator toolkit written in Java. 
+ANLTR is widely used in the software development industry for 
+developing programming languages, query languages, and pattern matching. 
+It generates the parser code from its own grammar
+	ANTLR can generate parser code in 10 different programming languages
+
